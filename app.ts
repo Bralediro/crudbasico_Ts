@@ -60,13 +60,13 @@ do {
             let nombre = prompt("Ingrese su nombre") as string;
             let apellido = prompt("Ingrese su apellido") as string;
             let celular = prompt("Ingrese su celular") as string;
-            let email = prompt("Ingrese su correo") as string;
+            let correo = prompt("Ingrese su correo") as string;
             let password = prompt("Ingrese una contraseña") as string;
-            let update = await client.execute(`update usuarios set nombre = ?,apellido = ?,celular = ?,email = ?,password = ? WHERE id = ?`, [
+            let update = await client.execute(`update usuarios set nombre = ?,apellido = ?,celular = ?,correo = ?,password = ? WHERE id = ?`, [
                 nombre,
                 apellido,
                 celular,
-                email,
+                correo,
                 password,
                 id_usuario,
             ]);

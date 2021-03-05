@@ -4,9 +4,10 @@
 import {client} from './config/conn.ts';
 import { UsuariosModel } from "./models/user.ts";
 import { UsuarioDTO } from "./dto/usuario.ts";
+import {UsuarioController} from "./controllers/usuario.ts";
 
 const usuariosModel = new UsuariosModel();
-
+const usuarioController = new UsuarioController();
 
 let crud
 
@@ -23,7 +24,7 @@ do {
     switch (crud) {
 
         case 1: {
-            console.log("Registro de usuarios")
+            /*console.log("Registro de usuarios")
 
             const nombre = prompt("Ingrese su nombre: ") as string;
             const apellido = prompt("Ingrese su apellido: ") as string;
@@ -39,12 +40,14 @@ do {
                     correo: correo,
                     password: password,
                 });
+                //await usuarioController.create();
 
                 console.log("Registro guardado")
                 //console.log()
             } else {
                 console.log("Por favor llenar el formulario correctamente")
-            }
+            }*/
+            await usuarioController.create();
         }
             break;
 
@@ -52,6 +55,7 @@ do {
         case 2 : {
 
             const  usuarios = await usuariosModel.listar();
+
             console.log(usuarios);
             let id_usuario = prompt("Seleccione el ID que desea actualizar") as string;
             let nombre = prompt("Ingrese su nombre") as string;
@@ -73,9 +77,7 @@ do {
         }
 
         case 3 : {
-            const  usuarios = await usuariosModel.listar();
-            // usuarios = await client.execute('select * from usuarios');
-            console.log(usuarios);
+            await usuarioController.listar();
             break;
 
         }
